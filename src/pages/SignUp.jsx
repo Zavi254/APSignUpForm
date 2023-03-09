@@ -6,7 +6,7 @@ import Image from "../components/Image";
 
 const SignUp = () => {
   return (
-    <div className="container topSection">
+    <div className="container topSection fontColor">
       <span className="icon">
         <BsArrowLeftShort />
       </span>

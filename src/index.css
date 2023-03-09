@@ -1,7 +1,10 @@
 body {
   font-family: 'Montserrat', sans-serif;
   position: relative;
-  /* border: 1px solid ; */
+}
+
+.fontColor {
+  color: #083E5B;
 }
 
 input {
@@ -27,7 +30,6 @@ label {
 }
 
 .topSection {
-  color: #083E5B;
   padding-bottom: 50px;
 }
 
@@ -75,11 +77,36 @@ label {
   border: 2px solid red;
 }
 
+.emailVerificationContainer {
+  height: 100vh;
+  text-align: center;
+}
+
+.emailVerificationContainer>* {
+  margin-bottom: 100px;
+}
+
+.innerEmailVerfication {
+  padding: 28px;
+}
+
+.innerEmailVerfication>* {
+  margin-bottom: 25px;
+}
+
+.emailIcon {
+  width: 40%;
+}
+
+.ApLogo {
+  width: 80%;
+}
+
 .googleBtn {
   background-color: #F5F6F9;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 768px) and (max-width: 991px)  {
 
   .icon {
     display: none;
@@ -89,5 +116,24 @@ label {
     display: block;
     margin-top: 20px;
     padding-bottom: 50px;
+  }
+
+  .emailIcon {
+    width: 30%;
+  }
+
+  .ApLogo {
+    width: 40%;
+  }
+
+}
+
+@media only screen and (min-width: 992px) {
+  .emailIcon {
+    width: 10%;
+  }
+
+  .ApLogo {
+    width: 25%;
   }
 }

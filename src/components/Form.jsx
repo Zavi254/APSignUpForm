@@ -1,4 +1,4 @@
-import Button from "./Button";
+import { Link } from "react-router-dom";
 
 const Form = () => {
   return (
@@ -32,7 +32,9 @@ const Form = () => {
           placeholder="Confirm your Password"
         />
       </div>
-      <Button className={"btn w-100 signUpBtn"} text={"Sign Up"} />
+      <Link className="btn w-100 signUpBtn" to={"/emailVerification"}>
+        Sign Up
+      </Link>
     </form>
   );
 };
