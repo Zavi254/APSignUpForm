@@ -1,6 +1,7 @@
 body {
   font-family: 'Montserrat', sans-serif;
   position: relative;
+  /* border: 1px solid ; */
 }
 
 input {
@@ -8,9 +9,14 @@ input {
   padding: 7px;
   outline: none;
   border: 1px solid rgba(8, 62, 91, 0.15);
-  width: 90%;
+  width: 100%;
   border-radius: 5px;
   font-weight: 400;
+}
+
+form {
+  padding: 25px;
+  margin-bottom: 10px;
 }
 
 label {
@@ -22,7 +28,7 @@ label {
 
 .topSection {
   color: #083E5B;
-  height: 100vh;
+  padding-bottom: 50px;
 }
 
 .logoImage {
@@ -31,11 +37,11 @@ label {
 }
 
 .topSection>h1 {
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .topSection>p {
-  font-weight: 500;
+  font-weight: 600;
   color: rgba(8, 62, 91, 0.5);
   line-height: 140%;
 }
@@ -43,14 +49,34 @@ label {
 .icon {
   font-size: 2.9rem;
 }
-.topRightVector{
+
+.topRightVector {
   position: absolute;
   right: 0;
 }
-.bottomLeftImage{
-  position:absolute;
+
+.bottomLeftImage {
+  position: absolute;
   left: 0;
   bottom: 0;
+}
+
+.signUpBtn {
+  background-color: #FCC455;
+}
+
+.orBorder {
+  border-top: 2px solid #E8E8E8;
+  height: 14px;
+  width: 45%;
+}
+
+.br {
+  border: 2px solid red;
+}
+
+.googleBtn {
+  background-color: #F5F6F9;
 }
 
 @media only screen and (min-width: 768px) {

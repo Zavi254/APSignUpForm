@@ -1,3 +1,5 @@
+import Button from "./Button";
+
 const Form = () => {
   return (
     <form>
@@ -30,8 +32,7 @@ const Form = () => {
           placeholder="Confirm your Password"
         />
       </div>
-
-      <button type="submit">Sign Up</button>
+      <Button className={"btn w-100 signUpBtn"} text={"Sign Up"} />
     </form>
   );
 };
