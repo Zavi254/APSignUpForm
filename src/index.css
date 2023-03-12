@@ -1,6 +1,6 @@
 body {
   font-family: 'Montserrat', sans-serif;
-  position: relative;
+  min-height: 100vh;
 }
 
 .fontColor {
@@ -9,12 +9,13 @@ body {
 
 input {
   margin-bottom: 25px;
-  padding: 7px;
+  padding: 10px;
   outline: none;
   border: 1px solid rgba(8, 62, 91, 0.15);
   width: 100%;
-  border-radius: 5px;
+  border-radius: 7px;
   font-weight: 400;
+  font-style: normal;
 }
 
 form {
@@ -29,13 +30,14 @@ label {
   line-height: 140%;
 }
 
-.topSection {
-  padding-bottom: 50px;
-}
 
 .logoImage {
   display: none;
   width: 20%;
+}
+
+.topSection {
+  min-height: 100vh;
 }
 
 .topSection>h1 {
@@ -86,11 +88,11 @@ label {
   margin-bottom: 100px;
 }
 
-.innerEmailVerfication {
+.innerEmailVerification {
   padding: 28px;
 }
 
-.innerEmailVerfication>* {
+.innerEmailVerification>* {
   margin-bottom: 25px;
 }
 
@@ -106,7 +108,25 @@ label {
   background-color: #F5F6F9;
 }
 
-@media only screen and (min-width: 768px) and (max-width: 991px)  {
+.dashboardSection {
+  background: rgba(8, 62, 91, 0.2);
+}
+
+@media only screen and (max-width: 767px) {
+  .dashboardSection {
+    display: none;
+  }
+
+  .homepage {
+    position: relative;
+  }
+
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .dashboardSection {
+    display: none;
+  }
 
   .icon {
     display: none;
@@ -129,11 +149,59 @@ label {
 }
 
 @media only screen and (min-width: 992px) {
+
+  .icon {
+    display: none;
+  }
+
+  .dashboardSection {
+    position: relative;
+    padding: 60px;
+  }
+
+  .dashboardImage {
+    position: absolute;
+    right: 0px;
+    bottom: 0;
+    width: 70%;
+  }
+
+  .logoImage {
+    display: block;
+    margin-top: 20px;
+    padding-bottom: 50px;
+  }
+
   .emailIcon {
     width: 10%;
   }
 
   .ApLogo {
     width: 25%;
+  }
+
+  .topSection {
+    position: relative;
+  }
+
+  .topRightVector {
+    top: 0;
+    right: -2%;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+  }
+
+  .email {
+    width: 75%;
+  }
+
+  .dashboardContent {
+    color: rgba(8, 62, 91, 0.5);
+    font-weight: 600;
   }
 }

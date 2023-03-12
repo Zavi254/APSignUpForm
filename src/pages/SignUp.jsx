@@ -3,10 +3,11 @@ import Button from "../components/Button";
 import { FcGoogle } from "react-icons/fc";
 import { BsArrowLeftShort } from "react-icons/bs";
 import Image from "../components/Image";
+import { Link } from "react-router-dom";
 
 const SignUp = () => {
   return (
-    <div className="container topSection fontColor">
+    <div className="topSection fontColor col-lg-6">
       <span className="icon">
         <BsArrowLeftShort />
       </span>
@@ -60,7 +61,7 @@ const SignUp = () => {
         <span>Terms of Use & Privacy Policy</span>
       </p>
       <p className="text-center">
-        I already have an account. <a href="#">Login</a>
+        I already have an account. <Link to={"#"}>Login</Link>
       </p>
     </div>
   );

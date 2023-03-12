@@ -11,7 +11,7 @@ const EmailVerification = () => {
         alternative={"AP logo"}
         className={"img-fluid mt-4 ApLogo"}
       />
-      <div className="innerEmailVerfication">
+      <div className="innerEmailVerification">
         <Image
           alternative={"Email Icon"}
           className={"emailIcon img-fluid"}
