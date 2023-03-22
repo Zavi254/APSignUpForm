@@ -10,7 +10,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="*" element={<NotFound />} />
-        <Route path="emailVerification" element={<EmailVerification />} />
+        <Route path="verify" element={<EmailVerification />} />
         <Route path="verified" element={<Verified />} />
       </Routes>
     </BrowserRouter>
