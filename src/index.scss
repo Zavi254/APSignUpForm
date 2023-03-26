@@ -55,22 +55,20 @@ body {
 .emailVerificationContainer {
   height: 100vh;
   text-align: center;
+  .emailIcon {
+    width: 40%;
+  }
+  .innerEmailVerification {
+    padding: 28px;
+  }
 }
 
 .emailVerificationContainer > * {
   margin-bottom: 100px;
 }
 
-.innerEmailVerification {
-  padding: 28px;
-}
-
 .innerEmailVerification > * {
   margin-bottom: 25px;
-}
-
-.emailIcon {
-  width: 40%;
 }
 
 .ApLogo {
@@ -98,7 +96,7 @@ body {
 
 @media only screen and (max-width: 767px) {
   .dashboard {
-    display: none;
+    @include displaynone();
   }
 
   .homepage {
@@ -108,7 +106,6 @@ body {
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .dashboard {
-    // display: none;
     @include displaynone();
   }
 
@@ -132,10 +129,6 @@ body {
 }
 
 @media only screen and (min-width: 992px) {
-  .icon {
-    display: none;
-  }
-
   .dashboard {
     position: relative;
     padding: 60px;
@@ -145,12 +138,6 @@ body {
       bottom: 0;
       width: 70%;
     }
-  }
-
-  .logoImage {
-    display: block;
-    margin-top: 20px;
-    padding-bottom: 50px;
   }
 
   .emailIcon {
@@ -163,11 +150,18 @@ body {
 
   .topSection {
     position: relative;
-  }
-
-  .topRightVector {
-    top: 0;
-    right: -2%;
+    .logoImage {
+      display: block;
+      margin-top: 20px;
+      padding-bottom: 50px;
+    }
+    .topRightVector {
+      top: 0;
+      right: -2%;
+    }
+    .icon {
+      @include displaynone();
+    }
   }
 
   .email {
@@ -175,7 +169,7 @@ body {
   }
 
   .dashboard-Content {
-    color: rgba(8, 62, 91, 0.5);
+    color: $fontColor;
     font-weight: 600;
   }
 }
