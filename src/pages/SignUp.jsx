@@ -1,4 +1,4 @@
-import Form from "../components/Form";
+import Form from "../components/form/Form.component"
 import Button from "../components/Button";
 import { FcGoogle } from "react-icons/fc";
 import { BsArrowLeftShort } from "react-icons/bs";

@@ -1,7 +1,10 @@
 import { useState } from "react";
-// import { Link } from "react-router-dom";
+import '../form/form.styles.scss'
+// import { useNavigate } from "react-router-dom";
 
 const Form = () => {
+  // const navigate = useNavigate();
+
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -104,14 +107,6 @@ const Form = () => {
           )}
         </div>
       </div>
-
-      {/* <Link
-        onSubmit={handleSubmit}
-        className="btn w-100 signUpBtn"
-        to={"#"}
-      >
-        Sign Up
-      </Link> */}
       <button className="btn w-100 signUpBtn" type="submit">
         Sign Up
       </button>

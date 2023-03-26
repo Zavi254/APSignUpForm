@@ -1,53 +1,29 @@
+@import "config";
+
+@mixin displaynone {
+  display: none;
+}
+
 body {
-  font-family: 'Montserrat', sans-serif;
   min-height: 100vh;
+  font-family: $fontFace;
 }
-
-.fontColor {
-  color: #083E5B;
-}
-
-input {
-  margin-bottom: 25px;
-  padding: 10px;
-  outline: none;
-  border: 1px solid rgba(8, 62, 91, 0.15);
-  width: 100%;
-  border-radius: 7px;
-  font-weight: 400;
-  font-style: normal;
-}
-
-form {
-  padding: 25px;
-  margin-bottom: 10px;
-}
-
-label {
-  margin-bottom: 10px;
-  color: #083E5B;
-  font-weight: 600;
-  line-height: 140%;
-}
-
 
 .logoImage {
   display: none;
   width: 20%;
 }
-
 .topSection {
   min-height: 100vh;
-}
-
-.topSection>h1 {
-  font-weight: 700;
-}
-
-.topSection>p {
-  font-weight: 600;
-  color: rgba(8, 62, 91, 0.5);
-  line-height: 140%;
+  h1 {
+    font-weight: 700;
+    color: $fontColor;
+  }
+  p {
+    font-weight: 600;
+    color: $fontColor;
+    line-height: 140%;
+  }
 }
 
 .icon {
@@ -66,18 +42,14 @@ label {
 }
 
 .signUpBtn {
-  background-color: #FCC455;
+  background-color: $yellowBackground;
   width: 30%;
 }
 
 .orBorder {
-  border-top: 2px solid #E8E8E8;
+  border-top: 2px solid #e8e8e8;
   height: 14px;
   width: 45%;
-}
-
-.br {
-  border: 2px solid red;
 }
 
 .emailVerificationContainer {
@@ -85,7 +57,7 @@ label {
   text-align: center;
 }
 
-.emailVerificationContainer>* {
+.emailVerificationContainer > * {
   margin-bottom: 100px;
 }
 
@@ -93,7 +65,7 @@ label {
   padding: 28px;
 }
 
-.innerEmailVerification>* {
+.innerEmailVerification > * {
   margin-bottom: 25px;
 }
 
@@ -106,10 +78,10 @@ label {
 }
 
 .googleBtn {
-  background-color: #F5F6F9;
+  background-color: #f5f6f9;
 }
 
-.dashboardSection {
+.dashboard {
   background: rgba(8, 62, 91, 0.2);
 }
 
@@ -119,30 +91,29 @@ label {
   font-weight: 600;
 }
 
-.verifiedContainer>p {
+.verifiedContainer > p {
   margin-bottom: 20%;
   width: 70%;
 }
 
 @media only screen and (max-width: 767px) {
-  .dashboardSection {
+  .dashboard {
     display: none;
   }
 
   .homepage {
     position: relative;
   }
-
 }
 
-
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-  .dashboardSection {
-    display: none;
+  .dashboard {
+    // display: none;
+    @include displaynone();
   }
 
   .icon {
-    display: none;
+    @include displaynone();
   }
 
   .logoImage {
@@ -158,25 +129,22 @@ label {
   .ApLogo {
     width: 40%;
   }
-
 }
 
 @media only screen and (min-width: 992px) {
-
   .icon {
     display: none;
   }
 
-  .dashboardSection {
+  .dashboard {
     position: relative;
     padding: 60px;
-  }
-
-  .dashboardImage {
-    position: absolute;
-    right: 0px;
-    bottom: 0;
-    width: 70%;
+    &-Image {
+      position: absolute;
+      right: 0px;
+      bottom: 0;
+      width: 70%;
+    }
   }
 
   .logoImage {
@@ -202,18 +170,11 @@ label {
     right: -2%;
   }
 
-  form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-  }
-
   .email {
     width: 75%;
   }
 
-  .dashboardContent {
+  .dashboard-Content {
     color: rgba(8, 62, 91, 0.5);
     font-weight: 600;
   }

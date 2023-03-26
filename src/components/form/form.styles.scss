@@ -1,0 +1,33 @@
+// $fontColor: #083e5b;
+@import "config";
+
+form {
+  padding: 25px;
+  margin-bottom: 10px;
+  input {
+    margin-bottom: 25px;
+    padding: 10px;
+    outline: none;
+    border: 1px solid rgba(8, 62, 91, 0.15);
+    width: 100%;
+    border-radius: 7px;
+    font: {
+      weight: 400;
+      style: normal;
+    }
+  }
+  label {
+    margin-bottom: 10px;
+    color: $fontColor;
+    font-weight: 600;
+    line-height: 140%;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
