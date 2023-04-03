@@ -1,68 +1,68 @@
+import "../form/form.styles.scss";
+import { useForm } from "react-hook-form";
+import * as Yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
-import '../form/form.styles.scss'
-// import { useNavigate } from "react-router-dom";
 
 const Form = () => {
-  // const navigate = useNavigate();
+  const [error, setError] = useState();
 
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [passwordError, setPasswordError] = useState(false);
+  // form validation rules
+  const validationSchema = Yup.object().shape({
+    first_name: Yup.string()
+      .required("Please enter your first name")
+      .min(3, "Your name is below 3 characters"),
+    last_name: Yup.string()
+      .required("Please enter your last name")
+      .min(3, "Your name is below 3 characters"),
+    email: Yup.string().required("Please enter your email address").min(2),
+    password: Yup.string()
+      .required("Please Enter a Password you can remember")
+      .min(8, "Please enter a minimum of 8 characters")
+      .matches(
+        /^(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*])/,
+        "Please add atleast one number, one letter & one special character"
+      ),
+    confirmPassword: Yup.string()
+      .required("Please enter a password")
+      .oneOf([Yup.ref("password")], "Passwords must match"),
+  });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (confirmPassword === password) {
-      setPasswordError(false);
-      fetch("https://ap-backend-0p5c.onrender.com/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          first_name: firstName,
-          last_name: lastName,
-          email: email,
-          password: password,
-        }),
-      })
-        .then((response) => response.json())
-        .then((result) => console.log(result))
-        .catch((error) => console.log(error));
-      setFirstName("");
-      setLastName("");
-      setEmail("");
-      setPassword("");
-      setConfirmPassword("");
-    } else {
-      setPasswordError(true);
-    }
+  const formOptions = { resolver: yupResolver(validationSchema) };
+
+  const { register, handleSubmit, formState } = useForm(formOptions);
+  const { errors } = formState;
+
+  const submitForm = (data) => {
+    fetch("https://ap-backend-0p5c.onrender.com/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((data) => setError(data.message));
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit(submitForm)}>
       <div className="fname d-md-flex justify-content-around w-100">
         <div className="firstName">
           <label>First Name</label> <br />
-          <input
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-            type="text"
-            name="first_name"
-            placeholder="Shiko"
-            required
-          />
+          <input type="text" placeholder="Shiko" {...register("first_name")} />
+          {errors.first_name?.message && (
+            <div className="alert alert-danger alertContainer">
+              {errors.first_name?.message}
+            </div>
+          )}
         </div>
         <div className="lastName">
           <label>Last Name</label> <br />
-          <input
-            value={lastName}
-            required
-            onChange={(e) => setLastName(e.target.value)}
-            type="text"
-            name="last_name"
-            placeholder="Doe"
-          />
+          <input type="text" placeholder="Doe" {...register("last_name")} />
+          {errors.last_name?.message && (
+            <div className="alert alert-danger alertContainer">
+              {errors.last_name?.message}
+            </div>
+          )}
         </div>
       </div>
 
@@ -70,39 +70,44 @@ const Form = () => {
         <label>Email</label>
         <br />
         <input
-          onChange={(e) => setEmail(e.target.value)}
-          value={email}
           type="email"
-          name="email"
           placeholder="abe@email.com"
-          required
+          {...register("email")}
         />
+
+        {errors.email?.message && (
+          <div className="alert alert-danger alertContainer">
+            {errors.email?.message}
+          </div>
+        )}
+        {error && (
+          <div className="alert alert-danger alertContainer">{error}</div>
+        )}
       </div>
       <div className="passwordContainer d-md-flex justify-content-around w-100">
         <div className="password">
           <label>Create Password</label> <br />
           <input
-            onChange={(e) => setPassword(e.target.value)}
-            value={password}
             type="password"
-            name="password"
             placeholder="Create a password"
-            required
+            {...register("password")}
           />
+          {errors.password?.message && (
+            <div className="alert alert-danger alertContainer">
+              {errors.password?.message}
+            </div>
+          )}
         </div>
         <div className="confirmPassword">
           <label>Confirm Password</label> <br />
           <input
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            value={confirmPassword}
             type="password"
-            name="confirmPassword"
             placeholder="Confirm your Password"
-            required
+            {...register("confirmPassword")}
           />
-          {passwordError && (
-            <div className="alert alert-danger">
-              <strong>Not Matching Password!!!</strong>
+          {errors.confirmPassword?.message && (
+            <div className="alert alert-danger alertContainer">
+              {errors.confirmPassword?.message}
             </div>
           )}
         </div>
