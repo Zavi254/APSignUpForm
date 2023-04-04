@@ -55,8 +55,21 @@ body {
 .emailVerificationContainer {
   height: 100vh;
   text-align: center;
-  .emailIcon {
-    width: 40%;
+  h3 {
+    color: $fontColor;
+    font-weight: bold;
+    font-size: 1.9rem;
+  }
+  p {
+    color: $lighterBlue;
+    font-weight: 600;
+  }
+  a {
+    color: $fontColor;
+    font-weight: 600;
+    padding: 8px;
+    border-radius: 7px;
+    width: 25%;
   }
   .innerEmailVerification {
     padding: 28px;
@@ -95,12 +108,24 @@ body {
 }
 
 @media only screen and (max-width: 767px) {
+  .emailVerificationContainer {
+    a {
+      color: $fontColor;
+      font-weight: 600;
+      padding: 8px;
+      border-radius: 7px;
+      width: 80%;
+    }
+  }
   .dashboard {
     @include displaynone();
   }
 
   .homepage {
     position: relative;
+  }
+  .emailIcon {
+    width: 30%;
   }
 }
 

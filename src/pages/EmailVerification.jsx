@@ -20,11 +20,15 @@ const EmailVerification = () => {
           }
         />
         <h3 className="fontColor">Verify your email address</h3>
-        <p style={{ color: "rgba(8, 62, 91, 0.5)" }}>
-          Activate your account by verifying your email address and start
-          investing with Africa’s Pocket.
+        <p>
+          You're only a few steps away from your new wealth bulding <br />
+          experience. Click the link we've sent to your email so we can <br />
+          confirm it's you.
         </p>
-        <Link className="btn signUpBtn w-30">Verify</Link>
+        <p>Haven't received your email? Click the button below now!</p>
+        <Link className="btn signUpBtn w-30">
+          Click here to resend verification email
+        </Link>
       </div>
     </div>
   );
