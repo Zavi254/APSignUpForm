@@ -98,16 +98,56 @@ body {
 
 .verifiedContainer {
   min-height: 100vh;
-  padding-top: 5%;
-  font-weight: 600;
-}
-
-.verifiedContainer > p {
-  margin-bottom: 20%;
-  width: 70%;
+  .innerVerifiedContainer {
+    padding: 40px;
+    width: 50%;
+    a {
+      font-weight: 600;
+      color: $fontColor;
+    }
+    p {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: $lighterBlue;
+    }
+    * {
+      margin-bottom: 20px;
+    }
+    h3 {
+      font-size: 2rem;
+      font-weight: bold;
+      color: $fontColor;
+    }
+  }
 }
 
 @media only screen and (max-width: 767px) {
+  .verifiedContainer {
+    min-height: 100vh;
+    .innerVerifiedContainer {
+      padding: 30px;
+      width: 100%;
+      a {
+        font-weight: 600;
+        color: $fontColor;
+        width: 50%;
+      }
+      p {
+        font-size: 1.1rem;
+        font-weight: 500;
+        color: $lighterBlue;
+      }
+      * {
+        margin-bottom: 20px;
+      }
+      h3 {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: $fontColor;
+      }
+    }
+  }
+
   .emailVerificationContainer {
     a {
       color: $fontColor;
@@ -130,6 +170,31 @@ body {
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
+  .verifiedContainer {
+    min-height: 100vh;
+    .innerVerifiedContainer {
+      padding: 30px;
+      width: 100%;
+      a {
+        font-weight: 600;
+        color: $fontColor;
+        width: 50%;
+      }
+      p {
+        font-size: 1.1rem;
+        font-weight: 500;
+        color: $lighterBlue;
+      }
+      * {
+        margin-bottom: 20px;
+      }
+      h3 {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: $fontColor;
+      }
+    }
+  }
   .dashboard {
     @include displaynone();
   }
