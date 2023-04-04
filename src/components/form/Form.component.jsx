@@ -3,9 +3,12 @@ import { useForm } from "react-hook-form";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Form = () => {
-  const [error, setError] = useState();
+  const navigate = useNavigate();
+
+  const [error, setError] = useState(null);
 
   // form validation rules
   const validationSchema = Yup.object().shape({
@@ -30,18 +33,33 @@ const Form = () => {
 
   const formOptions = { resolver: yupResolver(validationSchema) };
 
-  const { register, handleSubmit, formState } = useForm(formOptions);
+  const { register, handleSubmit, formState, reset } = useForm(formOptions);
   const { errors } = formState;
 
-  const submitForm = (data) => {
-    fetch("https://ap-backend-0p5c.onrender.com/register", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    })
-      .then((response) => response.json())
-      .then((data) => setError(data.message));
-  };
+  async function submitForm(data) {
+    try {
+      const response = await fetch(
+        "https://ap-backend-0p5c.onrender.com/register",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      );
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        setError(errorData.error);
+      } else {
+        reset();
+        navigate("/verify");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <form onSubmit={handleSubmit(submitForm)}>
