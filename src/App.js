@@ -3,16 +3,38 @@ import EmailVerification from "./pages/EmailVerification";
 import HomePage from "./pages/HomePage";
 import NotFound from "./pages/NotFound";
 import Verified from "./pages/Verified";
+import Protected from "./pages/Protected";
+import { useState } from "react";
+import { UserContext } from "./UserContext";
 
 function App() {
+  const [isSignedIn, setSignedIn] = useState(null);
+
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="*" element={<NotFound />} />
-        <Route path="verify" element={<EmailVerification />} />
-        <Route path="verified" element={<Verified />} />
-      </Routes>
+      <UserContext.Provider value={{ isSignedIn, setSignedIn }}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="*" element={<NotFound />} />
+
+          <Route
+            path="verify-email"
+            element={
+              <Protected isSignedIn={isSignedIn}>
+                <EmailVerification />
+              </Protected>
+            }
+          />
+          <Route
+            path="account-verified/"
+            element={
+              <Protected isSignedIn={isSignedIn}>
+                <Verified />
+              </Protected>
+            }
+          />
+        </Routes>
+      </UserContext.Provider>
     </BrowserRouter>
   );
 }

@@ -2,11 +2,14 @@ import "../form/form.styles.scss";
 import { useForm } from "react-hook-form";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../UserContext";
 
 const Form = () => {
   const navigate = useNavigate();
+
+  const { setSignedIn } = useContext(UserContext);
 
   const [error, setError] = useState(null);
 
@@ -54,7 +57,8 @@ const Form = () => {
         setError(errorData.error);
       } else {
         reset();
-        navigate("/verify");
+        setSignedIn(true);
+        navigate("/verify-email");
       }
     } catch (error) {
       console.log(error);
